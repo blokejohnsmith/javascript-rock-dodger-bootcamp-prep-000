@@ -19,7 +19,7 @@ describe('Rock Dodger', () => {
     })
 
     describe('rock is > 360px from the top of GAME', () => {
-      let rock
+      var rock
 
       beforeEach(() => {
         rock = document.createElement('div')
@@ -54,7 +54,7 @@ describe('Rock Dodger', () => {
   })
 
   describe('createRock(x)', () => {
-    let rock
+    var rock
 
     beforeEach(() => {
       window.requestAnimationFrame = expect.createSpy()
@@ -72,7 +72,7 @@ describe('Rock Dodger', () => {
 
     describe('moveRock()', () => {
       it('checks for a collision', () => {
-        let called = false
+        var called = false
 
         const spy = expect.spyOn(window, 'checkCollision')
 
@@ -111,7 +111,7 @@ describe('Rock Dodger', () => {
 //         const rock = createRock(2)
 //         const spy = expect.spyOn(rock, 'remove')
 
-//         // Janky setTimeout to let the rock fall
+//         // Janky setTimeout to var the rock fall
 //         // off the screen
 //         setTimeout(() => {
 //           expect(spy).toHaveBeenCalled()
@@ -134,17 +134,17 @@ describe('Rock Dodger', () => {
       // noop
       window.requestAnimationFrame = () => {}
 
-      let spies = []
+      var spies = []
 
-      for (let i = 0; i < 4; i++) {
-        let rock = createRock(i)
+      for (var i = 0; i < 4; i++) {
+        var rock = createRock(i)
 
         spies.push(expect.spyOn(rock, 'remove'))
       }
 
       endGame()
 
-      for (let i = 0; i < 4; i++) {
+      for (var i = 0; i < 4; i++) {
         expect(spies[i]).toHaveBeenCalled()
       }
     })
@@ -186,7 +186,7 @@ describe('Rock Dodger', () => {
     })
 
     describe('e.which === LEFT_ARROW', () => {
-      let e, spy
+      var e, spy
 
       beforeEach(() => {
         spy = expect.createSpy()
@@ -225,7 +225,7 @@ describe('Rock Dodger', () => {
     })
 
     describe('e.which === RIGHT_ARROW', () => {
-      let e, spy
+      var e, spy
 
       beforeEach(() => {
         spy = expect.createSpy()
@@ -307,7 +307,7 @@ describe('Rock Dodger', () => {
       expect(positionToInteger(dodger.style.left)).toBeGreaterThan(left)
     })
 
-    it('does not move the DODGER left if the DODGER\'s right edge already touches the right edge of GAME', () => {
+    it('does not move the DODGER right if the DODGER\'s right edge already touches the right edge of GAME', () => {
       dodger.style.left = '360px'
 
       moveDodgerRight()
